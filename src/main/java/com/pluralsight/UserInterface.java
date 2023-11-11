@@ -104,8 +104,23 @@ public class UserInterface {
     public static void processAddVehicleRequest(){
 
     }
-    public static void processRemoveVehicleRequest(){
+    public static void processRemoveVehicleRequest() throws IOException {
+        DealershipFileManager.loadInventory();
 
+        ArrayList<Vehicle> allVehicles = Dealership.getAllVehicles();
+
+        System.out.println("You have opted to remove a vehicle.");
+        System.out.println("What Vehicle would you like to remove? Please enter the VIN: ");
+        int vin = myScanner.nextInt();
+
+        for (Vehicle vehicle: allVehicles){
+            if(vin == vehicle.getVin()){
+                allVehicles.remove(vehicle);
+            }
+        }
+       DealershipFileManager.writeFile();
+
+        System.out.println("Vehicle has been removed from inventory. ");
     }
 
 }

@@ -10,9 +10,9 @@ public class CarDealership {
 
         // UserInterface.processGetAllVehiclesRequest();
 
-        UserInterface.processGetByYearRequest();
+       // UserInterface.processGetByYearRequest();
 
-
+        UserInterface.processRemoveVehicleRequest();
 
     }
 }

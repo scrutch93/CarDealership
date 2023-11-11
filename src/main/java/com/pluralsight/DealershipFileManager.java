@@ -6,13 +6,12 @@ import java.io.*;
 public class DealershipFileManager {
 
 
-    //Dealership dealership= new Dealership("SA Motors","Charlotte, NC", "1-800-5555");
+    static Dealership dealership= new Dealership("SA Motors","Charlotte, NC", "1-800-5555");
 
     public static void writeFile() throws IOException {
         FileWriter fileWriter = new FileWriter("src/main/resources/Inventory.csv", true);
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
-        //return bufferedWriter;
 
         bufferedWriter.close();
     }
@@ -23,14 +22,7 @@ public class DealershipFileManager {
         FileReader fileReader = new FileReader("src/main/resources/Inventory.csv");
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         String input;
-//        private int vin;
-//        private double price;
-//        private  String model;
-//        private String make;
-//        private int year;
-//        private String color;
-//        private int odometer;
-//        private String type;
+
         String output = null;
         while ((input = bufferedReader.readLine()) != null) {
             String[] vehicle = input.split("\\|");
@@ -87,7 +79,7 @@ public class DealershipFileManager {
 //    static BufferedReader reader = new BufferedReader(fileReader);
 
 
-//    public Dealership getDealership() throws FileNotFoundException {
+    //    public Dealership getDealership() throws FileNotFoundException {
 //
 //       // readFile();
 //

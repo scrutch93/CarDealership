@@ -41,51 +41,83 @@ public class Dealership {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-//    public ArrayList<Vehicle> getVehicleByPrice(double min, double max){
-//
-//    }
-//    public ArrayList<Vehicle> getVehicleByMakeModel(String model,String make){
-//
-//    }
-//    public ArrayList<Vehicle> getVehicleByYear(int minYear, int maxYear){
-//
-//    }
-    public static ArrayList<Vehicle> getVehicleByColor(String color) throws IOException {
+    public static ArrayList<Vehicle> getVehicleByPrice(double min, double max) throws IOException {
         DealershipFileManager.loadInventory();
+        ArrayList<Vehicle> priceList = new ArrayList<>();
+        for (Vehicle vehicle: inventory) {
+            if (vehicle.getPrice()>= min && vehicle.getPrice() <=max ) {
+                priceList.add(vehicle);
+            }
+        }
+        return priceList;
+    }
+    public static ArrayList<Vehicle> getVehicleByMakeModel(String model,String make) throws IOException {
+        DealershipFileManager.loadInventory();
+        ArrayList<Vehicle> thisList = new ArrayList<>();
 
 
-      for (Vehicle vehicle: inventory){
-          if(vehicle.getColor() == color){
-              return inventory;
-          }
-      }
-        return null;
+        for (Vehicle vehicle: inventory) {
+            if (vehicle.getMake().equalsIgnoreCase(make) && vehicle.getModel().equalsIgnoreCase(model)) {
+                thisList.add(vehicle);
+            }
+        }
+        return thisList;
 
     }
-//    public ArrayList<Vehicle> getVehicleByMileage(int odometer){
-//
-//    }
-//    public ArrayList<Vehicle> getVehicleByType(String type){
-//
-//    }
-    public static ArrayList getAllVehicles() throws IOException {
+    public static ArrayList<Vehicle> getVehicleByYear(int minYear, int maxYear) throws IOException {
         DealershipFileManager.loadInventory();
-        for (Vehicle vehicle : inventory){
-           // System.out.println(vehicle);
-
-            return inventory;
-//                    "VIN: "+ vehicle.getVin()+" | Model: " + vehicle.getModel()+ " | Make: " +vehicle.getMake()+" | Type: "+ vehicle.getType()+
-//                    " | Year: "+ vehicle.getYear() +" | Color: " + vehicle.getColor() +" | Odometer: " +vehicle.getOdometer()+" | Price: " + vehicle.getPrice();
-//
-            //System.out.printf("VIN: %d | Model: %s | Make: %s | Type: %s | Year: %s | Color: %s | Odometer: %s| Price: $%.2f\n",
-                  //  vehicle.getVin(), vehicle.getModel(), vehicle.getMake(), vehicle.getType() , vehicle.getYear(), vehicle.getColor(),vehicle.getOdometer(),vehicle.getPrice());
+        ArrayList<Vehicle> yearList = new ArrayList<>();
+        for (Vehicle vehicle: inventory) {
+            if (vehicle.getYear()>= minYear && vehicle.getYear() <=maxYear ) {
+                yearList.add(vehicle);
+            }
         }
-        return null;
+        return yearList;
+    }
+    public static ArrayList<Vehicle> getVehicleByColor(String color) throws IOException {
+        DealershipFileManager.loadInventory();
+        ArrayList<Vehicle> colorList = new ArrayList<>();
+
+
+        for (Vehicle vehicle: inventory) {
+            if (vehicle.getColor().equalsIgnoreCase(color)) {
+                colorList.add(vehicle);
+            }
+        }
+        return colorList;
+    }
+    public static ArrayList<Vehicle> getVehicleByMileage(int minOdometer,int maxOdometer) throws IOException {
+        DealershipFileManager.loadInventory();
+        ArrayList<Vehicle> mileageList = new ArrayList<>();
+        for (Vehicle vehicle: inventory) {
+            if (vehicle.getYear()>= minOdometer && vehicle.getYear() <=maxOdometer ) {
+                mileageList.add(vehicle);
+            }
+        }
+        return mileageList;
+    }
+    public static ArrayList<Vehicle> getVehicleByType(String type) throws IOException {
+        DealershipFileManager.loadInventory();
+        ArrayList<Vehicle> typeList = new ArrayList<>();
+
+
+        for (Vehicle vehicle: inventory) {
+            if (vehicle.getType().equalsIgnoreCase(type)) {
+                typeList.add(vehicle);
+            }
+        }
+        return typeList;
+
+    }
+    public static ArrayList<Vehicle> getAllVehicles() throws IOException {
+        DealershipFileManager.loadInventory();
+        return inventory;
     }
     public void addVehicle(Vehicle vehicle){
         inventory.add(vehicle);
     }
-    public void removeVehicle(){
+    public void removeVehicle(Vehicle vehicle){ //???
+        inventory.remove(vehicle);
 
     }
 

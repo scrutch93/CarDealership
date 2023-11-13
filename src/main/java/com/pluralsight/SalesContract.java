@@ -20,7 +20,7 @@ public class SalesContract extends Contract {
         this.finance = finance;
     }
 
-    public double getSalesTax() {
+    public static double getSalesTax() {
         return salesTax;
     }
 
@@ -28,7 +28,7 @@ public class SalesContract extends Contract {
         this.salesTax = salesTax;
     }
 
-    public double getRecordingFee() {
+    public static double getRecordingFee() {
         return recordingFee;
     }
 
@@ -36,7 +36,7 @@ public class SalesContract extends Contract {
         this.recordingFee = recordingFee;
     }
 
-    public double getProcessingFee(Vehicle vehicle) {
+    public static double getProcessingFee(Vehicle vehicle) {
        // Vehicle vehicle = new Vehicle(12,"Accord","Honda","car",2000, "blue", 180000, 3000 );
 
         if (vehicle.getPrice() <= 10000){
@@ -53,7 +53,7 @@ public class SalesContract extends Contract {
         this.processingFee = processingFee;
     }
 
-    public boolean isFinance() {
+    public static boolean isFinance() {
         return finance;
     }
 
@@ -63,7 +63,7 @@ public class SalesContract extends Contract {
 
 
     @Override
-    public double getMonthlyPayment(Vehicle vehicle) {
+    public static double getMonthlyPayment(Vehicle vehicle) {
         //Monthly payment = (loan amount) × (interest rate / 12) / (1 − (1 + (interest rate / 12)) ^ (-loan term))
 
 
@@ -96,7 +96,7 @@ public class SalesContract extends Contract {
         return monthlyPayment;
     }
     @Override
-    public double getTotalPrice(Vehicle vehicle) {
+    public static double getTotalPrice(Vehicle vehicle) {
 
         int months = 0;
         double monthlyPayment = getMonthlyPayment(vehicle);

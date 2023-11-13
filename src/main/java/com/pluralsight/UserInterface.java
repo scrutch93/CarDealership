@@ -1,5 +1,6 @@
 package com.pluralsight;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -7,6 +8,8 @@ import static com.pluralsight.Dealership.inventory;
 
 public class UserInterface {
     static Scanner myScanner = new Scanner(System.in);
+    SalesContract sales = new SalesContract()
+
     Dealership dealership= new Dealership("SA Motors","Charlotte, NC", "1-800-5555");
 
     public UserInterface(){
@@ -105,22 +108,63 @@ public class UserInterface {
 
     }
     public static void processRemoveVehicleRequest() throws IOException {
-        DealershipFileManager.loadInventory();
+//        DealershipFileManager.loadInventory();
+//
+//        ArrayList<Vehicle> allVehicles = Dealership.getAllVehicles();
+//
+//        System.out.println("You have opted to remove a vehicle.");
+//        System.out.println("What Vehicle would you like to remove? Please enter the VIN: ");
+//        int vin = myScanner.nextInt();
+//
+//        for (Vehicle vehicle: allVehicles){
+//            if(vin == vehicle.getVin()){
+//                allVehicles.remove(vehicle);
+//            }
+//        }
+//       DealershipFileManager.writeFile();
+//
+//        System.out.println("Vehicle has been removed from inventory. ");
+    }
 
-        ArrayList<Vehicle> allVehicles = Dealership.getAllVehicles();
+    public static void saleOption() throws IOException {
 
-        System.out.println("You have opted to remove a vehicle.");
-        System.out.println("What Vehicle would you like to remove? Please enter the VIN: ");
+        ArrayList<Vehicle> all = Dealership.getAllVehicles();
+
+
+        Vehicle car;
+
+        LocalDate date = LocalDate.now();
+
+
+        System.out.println("You have opted to buy a vehicle. Please provide VIN of vehicle you are interest in purchasing: ");
         int vin = myScanner.nextInt();
 
-        for (Vehicle vehicle: allVehicles){
-            if(vin == vehicle.getVin()){
-                allVehicles.remove(vehicle);
-            }
-        }
-       DealershipFileManager.writeFile();
+        System.out.println("Enter name: ");
+        String name = myScanner.next();
 
-        System.out.println("Vehicle has been removed from inventory. ");
+        System.out.println("Enter Email: ");
+        String email = myScanner.next();
+
+        for(Vehicle vehicle: all ){
+
+            if(vin == vehicle.getVin()){
+
+              car = vehicle;
+
+                String info = "SALE" +"|" + date +"|" + name +"|" + email +"|" + car.getVin()+"|" + car.getYear() +"|" + car.getMake() +"|" + car.getModel() +"|" + car.getType()+"|" + car.getColor() +"|" + car.getOdometer() +"|" + car.getPrice() +"|" + (SalesContract.getSalesTax()* car.getPrice()) +"|" + SalesContract.getRecordingFee() +"|" + SalesContract.getProcessingFee(car) +"|" + SalesContract.getTotalPrice(car)+"|" + SalesContract.isFinance() +"|" + SalesContract.getMonthlyPayment(car);
+
+                DealershipFileManager.writeContract(info);
+           }
+
+        }
+
+
+
+
     }
+
+
+
+
 
 }

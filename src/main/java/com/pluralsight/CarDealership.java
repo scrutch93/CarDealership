@@ -23,8 +23,10 @@ public class CarDealership {
         //System.out.println(salesContract.getMonthlyPayment(vehicle));
 
 
-        System.out.println(salesContract.getTotalPrice(vehicle));
+       // System.out.println(salesContract.getTotalPrice(vehicle));
 
+
+        UserInterface.saleOption();
 
     }
 }

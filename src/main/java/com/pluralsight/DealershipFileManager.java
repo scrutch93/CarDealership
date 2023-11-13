@@ -48,51 +48,22 @@ public class DealershipFileManager {
     }
 
 
-
-
-
-//    static FileWriter fileWriter;
-//
-//
-//    static {
-//        try {
-//            fileWriter = new FileWriter("src/main/resources/Inventory.csv");
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
-//
-//    BufferedWriter writer = new BufferedWriter(fileWriter);
-//
-//
-//
-//    static FileReader fileReader;
-//
-//    static {
-//        try {
-//            fileReader = new FileReader("src/main/resources/Inventory.csv");
-//        } catch (FileNotFoundException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
-//
-//    static BufferedReader reader = new BufferedReader(fileReader);
-
-
-    //    public Dealership getDealership() throws FileNotFoundException {
-//
-//       // readFile();
-//
-//        String input;
-//
-//
-//
-//
-//
-//       // return dealership;
-//    }
     public void saveDealership(){
 
     }
+
+    public static void writeContract(String contractInfo) throws IOException {
+        FileWriter fileWriter = new FileWriter("src/main/resources/Contract.csv", true);
+        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+        bufferedWriter.write(contractInfo);
+
+
+
+        bufferedWriter.close();
+    }
+
+
+
 
 }
